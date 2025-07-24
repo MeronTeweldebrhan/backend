@@ -10,8 +10,23 @@ const PORT =process.env.PORT || 3000;
 
 
 const app = express(); 
-app.use(cors({origin: 'https://fullstackmerno.netlify.app/',
-  credentials: true}));
+
+const allowedOrigins = [
+  'https://fullstackmerno.netlify.app',
+  'http://localhost:5173'
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps or curl)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS not allowed from this origin: ' + origin));
+    }
+  },
+  credentials: true
+}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
