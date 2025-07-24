@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import bookRoutes from './routes/booksRoutes.js'
+import postRoutes from './routes/postRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import cors from 'cors';
 import connection from './config/connection.js';
@@ -10,11 +10,11 @@ const PORT =process.env.PORT || 3000;
 
 
 const app = express(); 
-app.use(cors());
+app.use(cors({origin: "http://localhost:5173"}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/', bookRoutes)
+app.use('/api/post', postRoutes)
 app.use('/api/users',userRoutes)
 
 
