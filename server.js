@@ -7,26 +7,27 @@ import connection from './config/connection.js';
 
 dotenv.config();
 const PORT =process.env.PORT || 3000;
-
+// const PROD_URL = process.env.PROD_URL;
 
 const app = express(); 
 
-const allowedOrigins = [
-  'https://fullstackmerno.netlify.app',
-  'http://localhost:5173'
-];
+// const allowedOrigins = [
+//   PROD_URL,
+//   'http://localhost:5173'
+// ];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    // allow requests with no origin (like mobile apps or curl)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('CORS not allowed from this origin: ' + origin));
-    }
-  },
-  credentials: true
-}));
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     // allow requests with no origin (like mobile apps or curl)
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('CORS not allowed from this origin: ' + origin));
+//     }
+//   },
+//   credentials: true
+// }));
+app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
