@@ -25,13 +25,12 @@ const app = express();
 //       callback(new Error('CORS not allowed from this origin: ' + origin));
 //     }
 //   },
-//   credentials: true
 // }));
 app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/api/post', postRoutes)
+app.use('/api/posts', postRoutes)
 app.use('/api/users',userRoutes)
 
 

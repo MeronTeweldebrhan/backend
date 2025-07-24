@@ -6,8 +6,8 @@ const router=express.Router()
 
 router.use(authMiddleware)
 
-router.post('/newpost', createPost);
-router.get('/getposts',getPost)
+router.post('/', createPost);
+router.get('/', getPost);
 
 
 
